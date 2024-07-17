@@ -120,6 +120,9 @@ elif defined(macosx) and defined(arm64):
   # Apple's Clang can't handle "-march=native" on M1: https://github.com/status-im/nimbus-eth2/issues/2758
   switch("passC", "-mcpu=apple-m1")
   switch("passL", "-mcpu=apple-m1")
+elif defined(risc) or defined(riscv64) or defined(riscv):
+  switch("passC", "-march=rv64gc")
+  switch("passL", "-march=rv64gc")
 else:
   switch("passC", "-march=native")
   switch("passL", "-march=native")
